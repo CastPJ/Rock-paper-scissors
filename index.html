@@ -7,12 +7,29 @@
     <title>Rock-Paper-Scissors</title>
   </head>
   <body>
-    <div id="wrapper">
+    <div class="gamefield">
+      <div class="score-field">
+        <div class="score">Player 0 : 2 Enemy</div>
+        <div class="result">Won!</div>
+      </div>
+      <div class="shape-field">
+        <div class="shape-image">
+          <img src="/images/paper.png" alt="Enemy's Shape" />
+        </div>
+        <div class="vs">VS.</div>
+        <div class="shape-image">
+          <img src="/images/rock.png" alt="Player's Shape" />
+        </div>
+      </div>
+    </div>
+    <div class="playerfield" id="wrapper">
       <button id="rock">Rock</button>
       <button id="paper">Paper</button>
       <button id="scissors">Scissors</button>
     </div>
-    <button id="show">Show Score</button>
+    <div class="additional">
+      <button id="show">Show Score</button>
+    </div>
 
     <script src="app.js"></script>
   </body>
