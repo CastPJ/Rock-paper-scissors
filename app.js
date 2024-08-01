@@ -7,6 +7,9 @@ wrapper.addEventListener("click", (e) => {
   game(e);
 });
 
+let playerPoints = 0;
+let enemyPoints = 0;
+
 function game(e) {
   const yourShape = e.target.id;
   const shapeNumber = Math.floor(Math.random() * 3);
@@ -22,6 +25,7 @@ function game(e) {
   }
 
   let result;
+
   if (yourShape === "rock") {
     switch (enemyShape) {
       case "rock":
@@ -62,4 +66,15 @@ function game(e) {
 
   console.log(`You played ${yourShape} vs. enemy's ${enemyShape}`);
   console.log(result);
+
+  if (result === "You won") {
+    playerPoints++;
+  } else if (result === "You lost") {
+    enemyPoints++;
+  }
 }
+
+const showScore = document.getElementById("show");
+showScore.addEventListener("click", () => {
+  console.log(`Your score: ${playerPoints}, Enemy score: ${enemyPoints}`);
+});
