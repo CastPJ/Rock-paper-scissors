@@ -7,28 +7,39 @@
     <title>Rock-Paper-Scissors</title>
   </head>
   <body>
-    <div class="gamefield">
-      <div class="score-field">
-        <div class="score">Player 0 : 2 Enemy</div>
-        <div class="result">Won!</div>
-      </div>
-      <div class="shape-field">
-        <div class="shape-image">
-          <img src="/images/paper.png" alt="Enemy's Shape" />
+    <div class="field">
+      <div class="gamefield">
+        <div class="score-field">
+          <div class="score">Player 0 : 0 Enemy</div>
+          <div class="result">------</div>
         </div>
-        <div class="vs">VS.</div>
-        <div class="shape-image">
-          <img src="/images/rock.png" alt="Player's Shape" />
+        <div class="shape-field">
+          <div class="shape-image-container">
+            <img class="shape-image" src="/images/1.jpg" alt="Enemy's Shape" />
+          </div>
+          <div class="vs">VS.</div>
+          <div class="shape-image-container">
+            <img class="shape-image" src="/images/2.jpg" alt="Player's Shape" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="playerfield" id="wrapper">
-      <button id="rock">Rock</button>
-      <button id="paper">Paper</button>
-      <button id="scissors">Scissors</button>
-    </div>
-    <div class="additional">
+      <div class="playerfield" id="wrapper">
+        <button class="btn-1" id="rock">
+          <img class="img-1" src="/images/rock.png" alt="" />
+          <p class="btn-p">Rock</p>
+        </button>
+        <button class="btn-2" id="paper">
+          <img class="img-2" src="/images/paper.png" alt="" />
+          <p class="btn-p">Paper</p>
+        </button>
+        <button class="btn-3" id="scissors">
+          <img class="img-3" src="/images/scissors.png" alt="" />
+          <p class="btn-p">Scissors</p>
+        </button>
+      </div>
+      <!-- <div class="additional">
       <button id="show">Show Score</button>
+    </div> -->
     </div>
 
     <script src="app.js"></script>
