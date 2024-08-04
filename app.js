@@ -1,5 +1,5 @@
 wrapper.addEventListener("click", (e) => {
-  const isButton = e.target.nodeName === "BUTTON";
+  const isButton = e.target.nodeName === "IMG";
   if (!isButton) {
     return;
   }
@@ -74,7 +74,7 @@ function game(e) {
   }
 }
 
-const showScore = document.getElementById("show");
-showScore.addEventListener("click", () => {
-  console.log(`Your score: ${playerPoints}, Enemy score: ${enemyPoints}`);
-});
+// const showScore = document.getElementById("show");
+// showScore.addEventListener("click", () => {
+//   console.log(`Your score: ${playerPoints}, Enemy score: ${enemyPoints}`);
+// });
