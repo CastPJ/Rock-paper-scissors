@@ -1,3 +1,9 @@
+const enemyShapeImage = document.getElementById("enemy-shape");
+const playerShapeImage = document.getElementById("player-shape");
+const rock = "/images/rock.png";
+const paper = "/images/paper.png";
+const scissors = "/images/scissors.png";
+
 wrapper.addEventListener("click", (e) => {
   const isButton = e.target.nodeName === "IMG";
   if (!isButton) {
@@ -16,17 +22,22 @@ function game(e) {
   switch (shapeNumber) {
     case 0:
       enemyShape = "rock";
+      enemyShapeImage.src = rock;
       break;
     case 1:
       enemyShape = "paper";
+      enemyShapeImage.src = paper;
       break;
     case 2:
       enemyShape = "scissors";
+      enemyShapeImage.src = scissors;
+      break;
   }
 
   let result;
 
   if (yourShape === "rock") {
+    playerShapeImage.src = rock;
     switch (enemyShape) {
       case "rock":
         result = "Tie";
@@ -39,6 +50,7 @@ function game(e) {
         break;
     }
   } else if (yourShape === "paper") {
+    playerShapeImage.src = paper;
     switch (enemyShape) {
       case "rock":
         result = "You won";
@@ -51,6 +63,7 @@ function game(e) {
         break;
     }
   } else if (yourShape === "scissors") {
+    playerShapeImage.src = scissors;
     switch (enemyShape) {
       case "rock":
         result = "You lost";
