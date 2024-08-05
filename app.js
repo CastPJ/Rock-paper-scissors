@@ -7,7 +7,11 @@ const score = document.getElementById("score");
 const resultField = document.getElementById("result-field");
 const resetBtn = document.getElementById("reset");
 
+var isActive = true;
+
 wrapper.addEventListener("click", (e) => {
+  if (!isActive) return;
+
   const isButton = e.target.nodeName === "IMG";
   if (!isButton) {
     return;
@@ -24,6 +28,8 @@ let enemyPoints = 0;
 function game(e) {
   const yourShape = e.target.id;
   const shapeNumber = Math.floor(Math.random() * 3);
+  let enemyShape;
+
   switch (shapeNumber) {
     case 0:
       enemyShape = "rock";
@@ -40,6 +46,7 @@ function game(e) {
   }
 
   let result;
+  let resultShow;
 
   if (yourShape === "rock") {
     playerShapeImage.src = rock;
@@ -84,18 +91,28 @@ function game(e) {
 
   if (result === "You won") {
     playerPoints++;
-    resultShow = "Won!";
+    resultShow = "Won";
     resultField.classList.remove("lose", "tie");
     resultField.classList.add("win");
   } else if (result === "You lost") {
     enemyPoints++;
-    resultShow = "Lost :(";
+    resultShow = "Lost";
     resultField.classList.remove("win", "tie");
     resultField.classList.add("lose");
   } else if (result === "Tie") {
     resultShow = "Tie";
     resultField.classList.remove("lose", "win");
     resultField.classList.add("tie");
+  }
+
+  if (playerPoints >= 5) {
+    resultShow = "Player won !!";
+    isActive = false;
+    resetBtn.innerText = "New game";
+  } else if (enemyPoints >= 5) {
+    resultShow = "Player lost !!";
+    isActive = false;
+    resetBtn.innerText = "New game";
   }
 
   score.innerText = `Player ${playerPoints} : ${enemyPoints} Enemy`;
@@ -108,4 +125,8 @@ function reset() {
   resultField.classList.remove("lose", "win", "tie");
   playerPoints = 0;
   enemyPoints = 0;
+  enemyShapeImage.src = "/images/empty.png";
+  playerShapeImage.src = "/images/empty.png";
+  isActive = true;
+  resetBtn.innerText = "Reset game";
 }
