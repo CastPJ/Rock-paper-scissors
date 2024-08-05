@@ -3,6 +3,8 @@ const playerShapeImage = document.getElementById("player-shape");
 const rock = "/images/rock.png";
 const paper = "/images/paper.png";
 const scissors = "/images/scissors.png";
+const score = document.getElementById("score");
+const resultField = document.getElementById("result-field");
 
 wrapper.addEventListener("click", (e) => {
   const isButton = e.target.nodeName === "IMG";
@@ -82,12 +84,20 @@ function game(e) {
 
   if (result === "You won") {
     playerPoints++;
+    resultShow = "Won!";
+    resultField.classList.remove("lose", "tie");
+    resultField.classList.add("win");
   } else if (result === "You lost") {
     enemyPoints++;
+    resultShow = "Lost :(";
+    resultField.classList.remove("win", "tie");
+    resultField.classList.add("lose");
+  } else if (result === "Tie") {
+    resultShow = "Tie";
+    resultField.classList.remove("lose", "win");
+    resultField.classList.add("tie");
   }
-}
 
-// const showScore = document.getElementById("show");
-// showScore.addEventListener("click", () => {
-//   console.log(`Your score: ${playerPoints}, Enemy score: ${enemyPoints}`);
-// });
+  score.innerText = `Player ${playerPoints} : ${enemyPoints} Enemy`;
+  resultField.innerText = resultShow;
+}
