@@ -5,6 +5,7 @@ const paper = "/images/paper.png";
 const scissors = "/images/scissors.png";
 const score = document.getElementById("score");
 const resultField = document.getElementById("result-field");
+const resetBtn = document.getElementById("reset");
 
 wrapper.addEventListener("click", (e) => {
   const isButton = e.target.nodeName === "IMG";
@@ -14,6 +15,8 @@ wrapper.addEventListener("click", (e) => {
 
   game(e);
 });
+
+resetBtn.addEventListener("click", reset);
 
 let playerPoints = 0;
 let enemyPoints = 0;
@@ -79,9 +82,6 @@ function game(e) {
     }
   }
 
-  console.log(`You played ${yourShape} vs. enemy's ${enemyShape}`);
-  console.log(result);
-
   if (result === "You won") {
     playerPoints++;
     resultShow = "Won!";
@@ -100,4 +100,12 @@ function game(e) {
 
   score.innerText = `Player ${playerPoints} : ${enemyPoints} Enemy`;
   resultField.innerText = resultShow;
+}
+
+function reset() {
+  score.innerText = `Player 0 : 0 Enemy`;
+  resultField.innerText = "------";
+  resultField.classList.remove("lose", "win", "tie");
+  playerPoints = 0;
+  enemyPoints = 0;
 }
